@@ -65,4 +65,28 @@ curve. The manuscript reports **exactly two tables** from these results.
 
 `research.py` is the complete executable experiment, `requirements.txt` pins
 compatible dependency ranges, and this README documents its scope. Generated
-figures/results are intentionally not tracked.
+intermediate generated results are ignored. The fixed experiment snapshot and two publication figures are tracked separately under the manuscript materials.
+
+## Manuscripts and submission status
+
+- [Short Communication (9-page PDF)](manuscript/KBS_Short_Communication.pdf), [editable Word](manuscript/KBS_Short_Communication.docx): preferred **article-type draft**.
+- [Expanded study (17-page PDF)](manuscript/KBS_Expanded_Draft_17pg.pdf), [editable Word](manuscript/KBS_Expanded_Draft_17pg.docx): longer research draft, **not compliant with the Short Communication length limit**.
+- [Final editorial and reference audit](manuscript/Submission_Readiness_Audit.md): journal-format checks, 27 references, figure/table checks, integrity limits, and unresolved requirements. **Recommendation: major revisions before submission**.
+- [Architecture figure](manuscript/Figure_1_Architecture.png), [risk-coverage figure](manuscript/Figure_2_Risk_Coverage.png), and [numeric results snapshot](results_snapshot.json): outputs from the public-data experiment. Both Word/PDF manuscript versions contain exactly two figures and two tables.
+
+Recreate the experimental outputs and Word drafts with Python 3.12:
+
+```powershell
+python -m pip install -r requirements.txt
+python research.py --output results
+python build_manuscript.py
+python build_manuscript.py --expanded
+```
+
+To render DOCX as PDF, use Microsoft Word or LibreOffice. Rendering may affect page count and must be rechecked. The experiment was originally run with NumPy 2.3.5, pandas 2.2.3, scikit-learn 1.8.0 and Matplotlib 3.10.8; `python-docx` 1.2.0 built the manuscript DOCXs.
+
+### Key measured outcome
+
+The validation evidence gate retained **confidence-only** quality triage. On 389 held-out samples at 80% automated coverage, its retrospective selective error was **14.79%**, versus **16.72%** for the unselected knowledge-guided candidate (difference +1.93 percentage points; 95% paired-bootstrap interval from -0.64 to +4.18 percentage points). These data do **not** show improved performance from the hybrid candidate, and do not measure SME adoption or entrepreneurship.
+
+The publication files are research drafts; individual author approval, further novelty analysis, independent data validation, and confirmation of current author guidelines remain necessary.

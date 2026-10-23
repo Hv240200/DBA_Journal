@@ -5,7 +5,6 @@ results/
 steel_plates_source.zip
 *.log
 .DS_Store
-build_manuscript.py
 manuscript.docx
 manuscript.pdf
 rendered/

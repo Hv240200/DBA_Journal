@@ -1,0 +1,115 @@
+{
+  "source": "https://archive.ics.uci.edu/static/public/198/steel+plates+faults.zip",
+  "dataset_sha256": "cb8eb9859198b63f053e443513036b401746fa517ef58bd17c846c6741c93919",
+  "seed": 42,
+  "n": 1941,
+  "train_n": 1164,
+  "valid_n": 388,
+  "test_n": 389,
+  "class_support": {
+    "Pastry": 158,
+    "Z_Scratch": 190,
+    "K_Scatch": 391,
+    "Stains": 72,
+    "Dirtiness": 55,
+    "Bumps": 402,
+    "Other_Faults": 673
+  },
+  "model_metrics": {
+    "Logistic regression": {
+      "accuracy": 0.6580976863753213,
+      "macro_f1": 0.6466800124765243,
+      "brier": 0.4698984081153301,
+      "log_loss": 0.9190080272206027
+    },
+    "Induced rules (tree)": {
+      "accuracy": 0.6118251928020566,
+      "macro_f1": 0.5217299865246499,
+      "brier": 0.4903555011378951,
+      "log_loss": 1.0568544833662679
+    },
+    "Calibrated gradient boosting": {
+      "accuracy": 0.7789203084832905,
+      "macro_f1": 0.7775916389773465,
+      "brier": 0.32134068860046966,
+      "log_loss": 0.6135557912998544
+    }
+  },
+  "rule_agreement_heldout": 0.6478149100257069,
+  "agreement_audit_heldout": {
+    "agree": {
+      "n": 252,
+      "error_rate": 0.16666666666666666,
+      "mean_ml_confidence": 0.7395944850774105
+    },
+    "disagree": {
+      "n": 137,
+      "error_rate": 0.32116788321167883,
+      "mean_ml_confidence": 0.5876211880041695
+    }
+  },
+  "validation_evidence_gate": {
+    "validation_selective_error_at_80pct": {
+      "Confidence only": 0.13870967741935483,
+      "Knowledge guided": 0.15806451612903225
+    },
+    "selected_policy": "Confidence only",
+    "heldout_selective_error_at_80pct": 0.14790996784565916
+  },
+  "retrospective_equal_coverage": {
+    "0.6": {
+      "Confidence only": {
+        "error": 0.07725321888412018,
+        "accepted": 233
+      },
+      "Knowledge guided": {
+        "error": 0.12017167381974249,
+        "accepted": 233
+      }
+    },
+    "0.8": {
+      "Confidence only": {
+        "error": 0.14790996784565916,
+        "accepted": 311
+      },
+      "Knowledge guided": {
+        "error": 0.16720257234726688,
+        "accepted": 311
+      }
+    },
+    "0.9": {
+      "Confidence only": {
+        "error": 0.18857142857142858,
+        "accepted": 350
+      },
+      "Knowledge guided": {
+        "error": 0.19142857142857142,
+        "accepted": 350
+      }
+    }
+  },
+  "paired_bootstrap_delta_hybrid_minus_baseline_at_80pct": {
+    "point": 0.01929260450160772,
+    "ci95_lower": -0.006430868167202564,
+    "ci95_upper": 0.04180064308681673,
+    "n_resamples": 2000
+  },
+  "validation_threshold_operating_point": {
+    "Confidence only": {
+      "validation_cutoff_for_80pct_target": 0.5385549292362428,
+      "heldout_coverage": 0.7712082262210797,
+      "heldout_selective_error": 0.13666666666666666
+    },
+    "Knowledge guided": {
+      "validation_cutoff_for_80pct_target": 0.4293224582884956,
+      "heldout_coverage": 0.7480719794344473,
+      "heldout_selective_error": 0.16151202749140894
+    }
+  },
+  "limitations": [
+    "Rule tree is data-induced, not an expert-validated manufacturing SOP.",
+    "Dataset provides labels, not action costs or intervention outcomes.",
+    "Retrospective rank curves are diagnostic, not deployment thresholds.",
+    "No SME adoption, entrepreneurship, or digital transformation outcomes are measured."
+  ]
+}
